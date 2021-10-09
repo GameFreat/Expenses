@@ -16,7 +16,7 @@ export function Landing({navigation}) {
   });
   useEffect(() => {
     if (state.text.length !== 0 && state.amount.length !== 0) {
-      CurrentDate = Key();
+      let CurrentDate = Key();
       if (state.details[CurrentDate] === undefined) {
         setState(prevState => ({
           ...prevState,
@@ -27,11 +27,20 @@ export function Landing({navigation}) {
         ...prevStates,
         details: {
           ...prevStates.details,
-          [CurrentDate]: [state.balance, ...prevStates.details[CurrentDate]],
+          [CurrentDate]: [
+            {
+              Details: state.text,
+              Amount: state.amount,
+              Balance: state.balance,
+              IncDec: state.incDec,
+            },
+            ...prevStates.details[CurrentDate],
+          ],
         },
       }));
     }
   }, [state.balance, state.incDec]);
+
   function Submit() {
     switch (state.checked) {
       case 'First':

@@ -13,10 +13,9 @@ export const RadioBtns = ({value, checked, setChecked}) => {
     />
   );
 };
-export function TextInpt({text, setText, placeholder, innerRef, keyboardType}) {
+export function TextInpt({text, setText, placeholder, keyboardType}) {
   return (
     <TextInput
-      ref={innerRef}
       style={{
         backgroundColor: '#222831',
         color: '#fffasd',
